@@ -1,0 +1,90 @@
+Задание 1 {
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Random random = new Random();
+
+        // Создаем массив случайных положительных трехзначных чисел
+        int[] array = new int[10];
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            if ((array[i] = random.Next()) % 2 == 0) count++;
+        }
+
+        Console.WriteLine(string.Join(", ", array));
+        Console.WriteLine(count);
+    }
+}
+}
+Задание 2 {
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Random random = new Random();
+
+        // Создаем массив случайных чисел
+        int[] array = new int[10];
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = random.Next();
+        }
+
+        // Находим сумму элементов на нечетных позициях
+        int sumOdd = 0;
+        for (int i = 1; i < array.Length; i += 2)
+        {
+            sumOdd += array[i];
+        }
+
+        Console.WriteLine(string.Join(", ", array));
+        Console.WriteLine(sumOdd);
+    }
+}
+
+##Задание 3
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Random random = new Random();
+
+        // Создаем массив вещественных чисел
+        double[] array = new double[10];
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = random.NextDouble() * 100;
+        }
+
+        // Находим максимальный и минимальный элементы массива
+        double maxVal = array[0];
+        double minVal = array[0];
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i] > maxVal)
+            {
+                maxVal = array[i];
+            }
+            if (array[i] < minVal)
+            {
+                minVal = array[i];
+            }
+        }
+
+        // Вычисляем разницу между максимальным и минимальным элементами
+        double difference = maxVal - minVal;
+
+        Console.WriteLine(string.Join(", ", array));
+        Console.WriteLine(difference);
+    }
+}
+}

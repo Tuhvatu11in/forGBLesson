@@ -8,7 +8,6 @@ class Program
     {
         Random random = new Random();
 
-        // Создаем массив случайных положительных трехзначных чисел
         int[] array = new int[10];
 
         for (int i = 0; i < array.Length; i++)
@@ -37,7 +36,6 @@ class Program
             array[i] = random.Next();
         }
 
-        // Находим сумму элементов на нечетных позициях
         int sumOdd = 0;
         for (int i = 1; i < array.Length; i += 2)
         {
@@ -58,14 +56,12 @@ class Program
     {
         Random random = new Random();
 
-        // Создаем массив вещественных чисел
         double[] array = new double[10];
         for (int i = 0; i < array.Length; i++)
         {
             array[i] = random.NextDouble() * 100;
         }
 
-        // Находим максимальный и минимальный элементы массива
         double maxVal = array[0];
         double minVal = array[0];
         for (int i = 1; i < array.Length; i++)
@@ -80,7 +76,6 @@ class Program
             }
         }
 
-        // Вычисляем разницу между максимальным и минимальным элементами
         double difference = maxVal - minVal;
 
         Console.WriteLine(string.Join(", ", array));

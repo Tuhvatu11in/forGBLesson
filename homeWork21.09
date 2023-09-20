@@ -15,7 +15,6 @@ class Program
             if ((array[i] = random.Next()) % 2 == 0) count++;
         }
 
-        Console.WriteLine(string.Join(", ", array));
         Console.WriteLine(count);
     }
 }
@@ -41,7 +40,6 @@ class Program
             sumOdd += array[i];
         }
 
-        Console.WriteLine(string.Join(", ", array));
         Console.WriteLine(sumOdd);
     }
 }
@@ -77,7 +75,6 @@ class Program
 
         double difference = maxVal - minVal;
 
-        Console.WriteLine(string.Join(", ", array));
         Console.WriteLine(difference);
     }
 }

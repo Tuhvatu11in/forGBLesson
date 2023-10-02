@@ -1,0 +1,266 @@
+Задание 1
+
+using System;
+using System.Linq;
+// Я не знаю можно ли использолвать System.Linq но без него то пришлость бы самому писать сортировку :(
+
+class Program
+{
+    static void Main()
+    {
+
+        double[,] randomArray = GenerateRandomArray(4, 4);
+
+        SortArrayDescending(randomArray);
+
+        PrintArray(randomArray);
+    }
+
+    static double[,] GenerateRandomArray(int numRows, int numCols)
+    {
+        Random random = new Random();
+        double[,] randomArray = new double[numRows, numCols];
+
+        for (int i = 0; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                randomArray[i, j] = random.NextDouble();
+            }
+        }
+
+        return randomArray;
+    }
+
+    static void SortArrayDescending(double[,] array)
+    {
+        int numRows = array.GetLength(0);
+        int numCols = array.GetLength(1);
+
+        for (int i = 0; i < numRows; i++)
+        {
+            double[] row = new double[numCols];
+
+            for (int j = 0; j < numCols; j++)
+            {
+                row[j] = array[i, j];
+            }
+
+            Array.Sort(row, (a, b) => -a.CompareTo(b));
+
+            for (int j = 0; j < numCols; j++)
+            {
+                array[i, j] = row[j];
+            }
+        }
+    }
+
+    static void PrintArray(double[,] array)
+    {
+        int numRows = array.GetLength(0);
+        int numCols = array.GetLength(1);
+
+        for (int i = 0; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                Console.Write(array[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+
+Задание 2
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int numRows = 5;
+        int numCols = 6;
+
+        double[,] randomArray = GenerateRandomArray(numRows, numCols);
+
+        int rowWithMinSum = FindRowWithMinSum(randomArray);
+
+        Console.Write(rowWithMinSum);
+    }
+
+    static double[,] GenerateRandomArray(int numRows, int numCols)
+    {
+        Random random = new Random();
+        double[,] randomArray = new double[numRows, numCols];
+
+        for (int i = 0; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                randomArray[i, j] = random.NextDouble();
+            }
+        }
+
+        return randomArray;
+    }
+
+    static int FindRowWithMinSum(double[,] array)
+    {
+        int numRows = array.GetLength(0);
+        int numCols = array.GetLength(1);
+        double minSum = double.MaxValue;
+        int rowWithMinSum = -1;
+
+        for (int i = 0; i < numRows; i++)
+        {
+            double sum = 0;
+
+            for (int j = 0; j < numCols; j++)
+            {
+                sum += array[i, j];
+            }
+
+            if (sum < minSum)
+            {
+                minSum = sum;
+                rowWithMinSum = i;
+            }
+        }
+        return rowWithMinSum;
+    }
+}
+
+Задание 3
+
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        int numPlanes = 3;
+        int numRows = 4;
+        int numCols = 5;
+
+        int[,,] array = GenerateUniqueNumbersArray(numPlanes, numRows, numCols);
+
+        PrintArrayWithIndices(array);
+    }
+
+    static int[,,] GenerateUniqueNumbersArray(int numPlanes, int numRows, int numCols)
+    {
+        int[,,] array = new int[numPlanes, numRows, numCols];
+        HashSet<int> uniqueNumbers = new HashSet<int>();
+        Random random = new Random();
+
+        for (int plane = 0; plane < numPlanes; plane++)
+        {
+            for (int row = 0; row < numRows; row++)
+            {
+                for (int col = 0; col < numCols; col++)
+                {
+                    int number;
+
+                    do
+                    {
+                        number = random.Next(10, 100);
+                    }
+                    while (uniqueNumbers.Contains(number));
+
+                    uniqueNumbers.Add(number);
+                    array[plane, row, col] = number;
+                }
+            }
+        }
+
+        return array;
+    }
+
+    static void PrintArrayWithIndices(int[,,] array)
+    {
+        int numPlanes = array.GetLength(0);
+        int numRows = array.GetLength(1);
+        int numCols = array.GetLength(2);
+
+        for (int plane = 0; plane < numPlanes; plane++)
+        {
+            Console.WriteLine($"Плоскость {plane}:");
+
+            for (int row = 0; row < numRows; row++)
+            {
+                for (int col = 0; col < numCols; col++)
+                {
+                    int number = array[plane, row, col];
+                    Console.Write($"[{plane},{row},{col}]: {number}\t");
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
+
+Задание 4
+// Извините, у меня никак не получается, вообще не могу понять как это сделать, числа постоянно туда-сюда и всё ломается(
+
+Задание 5
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int numRowsA = 2;
+        int numColsA = 2;
+
+        int numRowsB = 2;
+        int numColsB = 2;
+
+        Random random = new Random();
+
+        int[,] matrixA = GenerateRandomMatrix(numRowsA, numColsA, random);
+        int[,] matrixB = GenerateRandomMatrix(numRowsB, numColsB, random);
+
+        static int[,] GenerateRandomMatrix(int numRows, int numCols, Random random)
+        {
+        int[,] matrix = new int[numRows, numCols];
+        for (int i = 0; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                matrix[i, j] = random.Next(1, 10);
+            }
+        }
+        return matrix;
+        }
+
+        int[,] resultMatrix = new int[numRowsA, numColsB];
+
+        for (int i = 0; i < numRowsA; i++)
+        {
+            for (int j = 0; j < numColsB; j++)
+            {
+                int sum = 0;
+                for (int k = 0; k < numColsA; k++)
+                {
+                    sum += matrixA[i, k] * matrixB[k, j];
+                }
+                resultMatrix[i, j] = sum;
+            }
+        }
+
+        for (int i = 0; i < numRowsA; i++)
+        {
+            for (int j = 0; j < numColsB; j++)
+            {
+                Console.Write(resultMatrix[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}

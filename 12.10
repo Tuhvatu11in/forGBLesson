@@ -1,0 +1,95 @@
+Задание 1
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите число N:");
+        int n = int.Parse(Console.ReadLine());
+
+        PrintNumbers(n);
+
+        Console.ReadLine();
+    }
+
+    static void PrintNumbers(int n)
+    {
+        if (n <= 1)
+        {
+            Console.WriteLine(n);
+            return;
+        }
+
+        Console.WriteLine(n);
+        PrintNumbers(n - 1);
+    }
+}
+
+Задание 2
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int m = int.Parse(Console.ReadLine());
+
+        int n = int.Parse(Console.ReadLine());
+
+        int sum = CalculateSum(m, n);
+
+        Console.ReadLine();
+    }
+
+    static int CalculateSum(int m, int n)
+    {
+        if (m > n)
+        {
+          Console.WriteLine("Певрое число должно быть меньше второго!!!");
+          return 0;
+        }
+        if (m == n)
+        {
+            return m;
+        }
+
+        return m + CalculateSum(m + 1, n);
+    }
+}
+
+##Либо
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int m = int.Parse(Console.ReadLine());
+
+        int n = int.Parse(Console.ReadLine());
+
+        int sum = CalculateSum(m, n);
+
+        Console.ReadLine();
+    }
+
+    static int CalculateSum(int m, int n)
+    {
+        if (m > n)
+        {
+            Console.WriteLine("Первое число должно быть меньше второго!!!");
+            return 0;
+        }
+
+        int numberOfElements = n - m + 1;
+        int sum = (numberOfElements / 2) * (m + n);
+
+        return sum;
+    }
+}
+
+Задание 3

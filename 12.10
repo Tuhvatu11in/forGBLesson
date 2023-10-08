@@ -93,3 +93,35 @@ class Program
 }
 
 Задание 3
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int m = int.Parse(Console.ReadLine());
+
+        int n = int.Parse(Console.ReadLine());
+
+        int result = Ackerman(m, n);
+
+        Console.ReadLine();
+    }
+
+    static int Ackerman(int m, int n)
+    {
+        if (m == 0)
+        {
+            return n + 1;
+        }
+        elif (m > 0 && n == 0)
+        {
+            return Ackermann(m - 1, 1);
+        }
+        elif (m > 0 && n > 0)
+        {
+            return Ackerman(m - 1, Ackerman(m, n - 1));
+        }
+    }
+}
